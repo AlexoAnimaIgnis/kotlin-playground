@@ -1,22 +1,34 @@
 package com.kotlinplayground.classes
 
-// inheritance is only allowed if there is "open" keyword
-// inheritance allows only one parent
+/**
+ * - inheritance is only allowed if there is "open" keyword
+ * - inheritance allows only one parent
+ */
 open class User(val name: String) {
 
-    fun login() {
+    open var isLoggedIn : Boolean = false
+
+    // initially 'login' in 'User' is final and cannot be overridden. add open to avoid issue
+    open fun login() {
         println("Inside user login")
     }
 
 }
 
-class Student(name: String): User(name)
+class Student(name: String): User(name) {
+    override var isLoggedIn : Boolean = false
+    override fun login(){
+        println("Inside student login")
+        super.login()
+    }
+}
 class Instructor(name:String): User(name)
 
 fun main() {
     val student = Student("Alexo")
     println("name is: ${student.name}")
     student.login()
+    student.isLoggedIn = true
 
 
     val instructor = Instructor("Instructor")
