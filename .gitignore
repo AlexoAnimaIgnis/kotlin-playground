@@ -25,7 +25,4 @@ replay_pid*
 
 .gradle/
 .idea/
-gradle
-gradlew
-gradlew.bat
 build
