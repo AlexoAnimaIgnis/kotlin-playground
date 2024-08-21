@@ -24,12 +24,12 @@ class Person(
 }
 
 fun main() {
-//    val person = Person("Alexo", 25) // no need to create an object using new keyword
-//    person.action()
-//    println("Name ${person.name} and the age is ${person.age}")
-//
-//    val person2 = Person()
-//    println("Name ${person2.name} and the age is ${person2.age}")
+    val person = Person("Alexo", 25) // no need to create an object using new keyword
+    person.action()
+    println("Name ${person.name} and the age is ${person.age}")
+
+    val person2 = Person()
+    println("Name ${person2.name} and the age is ${person2.age}")
 
     val person3 = Person(_email = "abc@gmail.com", _name = "Alexo", _age = 25)
 
