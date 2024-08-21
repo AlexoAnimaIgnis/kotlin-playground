@@ -3,30 +3,44 @@ package com.kotlinplayground.interfaces
 import com.kotlinplayground.classes.Course
 
 interface CourseRepository {
+    var isCoursePersisted: Boolean
 
     fun getById(id: Int): Course
     fun save(course: Course):Int
 }
 
-class SqlCourseRepository : CourseRepository {
+interface Repository {
+    fun getAll(): Any
+}
+
+class SqlCourseRepository : CourseRepository, Repository {
+    override var isCoursePersisted: Boolean = false
 
     override fun getById(id: Int): Course {
         return Course(id, "Reactive", "alexo")
     }
 
     override fun save(course: Course): Int {
+        isCoursePersisted = true
         println("Course: ${course.id}")
         return course.id
+    }
+
+
+    override fun getAll(): Any {
+        return 1
     }
 }
 
 class NoSqlCourseRepository : CourseRepository {
+    override var isCoursePersisted: Boolean = false
 
     override fun getById(id: Int): Course {
         return Course(id, "NoSqL", "alexo")
     }
 
     override fun save(course: Course): Int {
+        isCoursePersisted = true
         println("NoSQl Course: ${course.id}")
         return course.id
     }
@@ -64,13 +78,16 @@ fun main() {
 
     val courseId = sqlCourseRepository.save(course)
     println("courseId: $courseId")
+    println("Course persisted value: ${sqlCourseRepository.isCoursePersisted}")
 
 
     val noSqlCourseRepository = NoSqlCourseRepository()
     val course1 = noSqlCourseRepository.getById(1)
     println(course1)
+
     val courseId2 = noSqlCourseRepository.save(course1)
     println("courseId: $courseId2")
+    println("Course persisted value: ${noSqlCourseRepository.isCoursePersisted}")
 
     val ab = AB()
     ab.doSomething()
