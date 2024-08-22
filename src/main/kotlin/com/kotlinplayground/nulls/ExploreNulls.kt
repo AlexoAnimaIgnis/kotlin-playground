@@ -5,6 +5,10 @@ data class Movie(
     val name: String
 )
 
+fun printName(name: String) {
+    println("name is $name")
+}
+
 fun saveMovie(movie: Movie) : Movie{
     return movie.copy(id =1)
 }
@@ -12,6 +16,12 @@ fun saveMovie(movie: Movie) : Movie{
 
 fun main() {
     var nameNullable : String? = null
+
+
+    //printName(nameNullable!!)
+    nameNullable?.run {
+        printName(this)
+    }
     println("value is ${nameNullable?.length}") // ? - safe call operators , meaning execute only if the variable is not null
 //    if (nameNullable != null) {
 //        println("value is ${nameNullable.length}")
