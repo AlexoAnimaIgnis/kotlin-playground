@@ -25,6 +25,8 @@ fun main() {
     var name: String = "Alexo"
     val movie = Movie(null, "Avengers")
     val savedMovie = saveMovie(movie)
+    savedMovie.id!! // null assertion
+    println(savedMovie.id!!)
     println("SavedMoview : $savedMovie")
 }
 
