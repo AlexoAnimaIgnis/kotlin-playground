@@ -17,8 +17,8 @@ fun main() {
 //        println("value is ${nameNullable.length}")
 //    }
 
-    nameNullable = "Alexo"
-    val length = nameNullable?.length
+//    nameNullable = "Alexo"
+    val length = nameNullable?.length ?: 0 //Elvis operator - provides a default value
     println("Length: $length")
     println("Value is: $nameNullable")
 
