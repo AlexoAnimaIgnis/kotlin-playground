@@ -7,12 +7,18 @@ import com.kotlinplayground.dataset.courseList
 fun main() {
     val courseList = courseList()
 
-    exploreFilter(courseList)
+    val devPredicate = { c: Course -> c.category == CourseCategory.DEVELOPEMENT }
+    val designPredicate = { c: Course -> c.category == CourseCategory.DESIGN }
+
+    exploreFilter(courseList, designPredicate)
 }
 
-fun exploreFilter(courseList: MutableList<Course>) {
+fun exploreFilter(
+    courseList: MutableList<Course>,
+    predicate: (Course) -> Boolean
+) {
 
-    val devCourse = courseList
+    courseList
         /*
 
             public inline fun <T> Iterable<T>.filter(predicate: (T) -> Boolean): List<T> {
@@ -23,9 +29,9 @@ fun exploreFilter(courseList: MutableList<Course>) {
             /*
             what is it? keyword in kotlin that gives you the access to the element its currently working on
              */
-            it.category == CourseCategory.DEVELOPEMENT
+            predicate.invoke(it)
         }.forEach {
-            println("DevCourses: $it")
+            println("Courses: $it")
         }
 
 
