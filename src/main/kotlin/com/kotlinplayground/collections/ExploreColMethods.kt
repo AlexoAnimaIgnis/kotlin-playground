@@ -2,6 +2,7 @@ package com.kotlinplayground.collections
 
 import com.kotlinplayground.dataset.Course
 import com.kotlinplayground.dataset.CourseCategory
+import com.kotlinplayground.dataset.KAFKA
 import com.kotlinplayground.dataset.courseList
 
 fun main() {
@@ -27,11 +28,24 @@ fun main() {
         }
     }
     println("flatMapResult: $flatMapResult")
+
+    val courses = exploreFlatMap(courseList, KAFKA)
+    println("Courses: $courses")
 }
 
-fun exploreFlatMap(courseList: List<List<Int>>) {
+fun exploreFlatMap(courseList: MutableList<Course>, kafka: String): List<String> {
+    val kafkaCourses = courseList.flatMap { course ->
+        val courseName = course.name
+        course.topicsCovered.filter {
+            it == kafka
+        }.map {
+            courseName
+        }
+    }
 
+    return kafkaCourses
 }
+
 
 fun exploreMap(courseList: MutableList<Course>, predicate: (Course) -> Boolean) {
     val courses = courseList
