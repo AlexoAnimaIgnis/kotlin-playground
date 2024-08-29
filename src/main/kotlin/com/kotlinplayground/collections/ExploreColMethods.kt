@@ -10,7 +10,17 @@ fun main() {
     val devPredicate = { c: Course -> c.category == CourseCategory.DEVELOPEMENT }
     val designPredicate = { c: Course -> c.category == CourseCategory.DESIGN }
 
-    exploreFilter(courseList, designPredicate)
+    //exploreFilter(courseList, designPredicate)
+    exploreMap(courseList, designPredicate)
+}
+
+fun exploreMap(courseList: MutableList<Course>, predicate: (Course) -> Boolean) {
+    val courses = courseList
+        .filter(predicate)
+        .map { "${it.name} - ${it.category}"  }
+        .forEach {
+            println(it)
+        } // foreach is a terminal operator
 }
 
 fun exploreFilter(
