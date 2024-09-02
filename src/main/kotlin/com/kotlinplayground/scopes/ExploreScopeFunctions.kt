@@ -14,8 +14,29 @@ fun main() {
      * - apply
      * - also
      */
-    exploreApply()
-    exploreAlso()
+    //exploreApply()
+    //exploreAlso()
+    exploreLet()
+}
+
+fun exploreLet() {
+    val numbers = mutableListOf(1, 2, 3, 4, 5)
+    // common concept
+    val res = numbers.map { it * 2 }.filter { it > 5 }
+        .let {
+            println(it)
+            it.sum()
+        }
+    println("result is $res")
+
+    var name : String? = null
+    name = "alexo"
+    val result1 = name?.let {
+        println(it)
+        it.uppercase()
+    }
+
+    println("result is $result1")
 }
 
 fun exploreApply() {
