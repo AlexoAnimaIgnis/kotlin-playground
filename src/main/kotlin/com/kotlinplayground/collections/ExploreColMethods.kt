@@ -8,12 +8,12 @@ import com.kotlinplayground.dataset.courseList
 fun main() {
     val courseList = courseList()
 
-    val devPredicate = { c: Course -> c.category == CourseCategory.DEVELOPEMENT }
-    val designPredicate = { c: Course -> c.category == CourseCategory.DESIGN }
-
-    //exploreFilter(courseList, designPredicate)
-    //exploreMap(courseList, designPredicate)
-
+//    val devPredicate = { c: Course -> c.category == CourseCategory.DEVELOPEMENT }
+//    val designPredicate = { c: Course -> c.category == CourseCategory.DESIGN }
+//
+//    exploreFilter(courseList, designPredicate)
+//    exploreMap(courseList, designPredicate)
+//
 //    val list = listOf(listOf(1,2,3), listOf(4,5,6))
 //    val mapList = list.map { outerList ->
 //        outerList.map {
@@ -33,6 +33,25 @@ fun main() {
 //    println("Courses: $courses")
 
     exploreHashMap()
+
+    collections_nullability()
+}
+
+// collections can be nullable
+fun collections_nullability() {
+
+    var list: List<String>? = null
+    list = mutableListOf()
+    list.add("Alexo")
+    list.forEach {
+        println("value is: $it")
+    }
+
+    val list1 : List<String?> = listOf("adam", null, "alexo")
+    list1.forEach {
+        println("value length is: ${it?.length}")
+    }
+
 }
 
 fun exploreHashMap() {
