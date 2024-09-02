@@ -1,9 +1,12 @@
 package com.kotlinplayground.classes
 
+import com.kotlinplayground.dataset.CourseCategory
+
 data class Course(
     val id: Int,
     val name: String,
     val author: String,
+    var courseCategory: CourseCategory = CourseCategory.DEVELOPEMENT
 )
 
 fun main() {
