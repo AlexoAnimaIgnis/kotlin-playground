@@ -16,7 +16,17 @@ fun main() {
      */
     //exploreApply()
     //exploreAlso()
-    exploreLet()
+    //exploreLet()
+    exploreWith()
+}
+
+fun exploreWith() {
+    val numbers = mutableListOf(1, 2, 3, 4, 5)
+    val result = with(numbers) {
+        println("size is $size")
+        sum()
+    }
+    println(result)
 }
 
 fun exploreLet() {
@@ -29,7 +39,7 @@ fun exploreLet() {
         }
     println("result is $res")
 
-    var name : String? = null
+    var name: String? = null
     name = "alexo"
     val result1 = name?.let {
         println(it)
